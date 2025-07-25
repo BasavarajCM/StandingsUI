@@ -1,0 +1,70 @@
+<mat-toolbar color="primary">
+  Football Standings
+</mat-toolbar>
+<div class="standings-container">
+  <mat-card>
+    <form>
+      <div class="form-row">
+        <mat-form-field appearance="outline">
+          <mat-label>Country</mat-label>
+          <mat-select [(ngModel)]="country" name="country" (selectionChange)="onCountryChange()">
+            <mat-option *ngFor="let c of countries" [value]="c.country_id">
+              <img *ngIf="c.country_logo" [src]="c.country_logo" width="20" style="vertical-align:middle; margin-right:8px;">{{c.country_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>League</mat-label>
+          <mat-select [(ngModel)]="league" name="league" (selectionChange)="onLeagueChange()">
+            <mat-option *ngFor="let l of leagues" [value]="l.league_id">
+              <img *ngIf="l.league_logo" [src]="l.league_logo" width="20" style="vertical-align:middle; margin-right:8px;">{{l.league_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Team</mat-label>
+          <mat-select [(ngModel)]="team" name="team">
+            <mat-option *ngFor="let t of teams" [value]="t.team_key">
+              <img *ngIf="t.team_badge" [src]="t.team_badge" width="20" style="vertical-align:middle; margin-right:8px;">{{t.team_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-slide-toggle [(ngModel)]="offlineMode" name="offlineMode" (change)="loadCountries()">Offline Mode</mat-slide-toggle>
+        <button mat-raised-button color="primary" type="button" (click)="getStandings()">Get Standings</button>
+      </div>
+    </form>
+  </mat-card>
+  <mat-card *ngIf="standings">
+    <h2>Standings</h2>
+    <div *ngIf="standings.length">
+      <table class="standings-table">
+        <tr>
+          <th>Position</th>
+          <th>Team</th>
+          <th>Points</th>
+          <th>Played</th>
+          <th>Won</th>
+          <th>Drawn</th>
+          <th>Lost</th>
+        </tr>
+        <tr *ngFor="let s of standings">
+          <td>{{s.overall_league_position || s.position}}</td>
+          <td>
+            <img *ngIf="s.team_badge" [src]="s.team_badge" width="20" style="vertical-align:middle; margin-right:8px;">
+            {{s.team_name || s.team}}
+          </td>
+          <td>{{s.overall_league_PTS || s.points}}</td>
+          <td>{{s.overall_league_payed || s.played}}</td>
+          <td>{{s.overall_league_W || s.won}}</td>
+          <td>{{s.overall_league_D || s.drawn}}</td>
+          <td>{{s.overall_league_L || s.lost}}</td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="offlineMode && (!standings || !standings.length)">
+      <p>No cached data available for offline mode.</p>
+    </div>
+  </mat-card>
+</div>
