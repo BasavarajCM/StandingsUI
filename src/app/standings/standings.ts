@@ -34,8 +34,8 @@ export class Standings implements OnInit {
     { team_key: '2986', team_name: 'Billericay Town', team_badge: 'https://apiv3.apifootball.com/badges/2986_billericay-town.jpg' }
   ];
   private mockStandings = [
-    { team_name: 'Horsham', overall_league_position: '1', overall_league_PTS: '87', overall_league_payed: '42', overall_league_W: '28', overall_league_D: '3', overall_league_L: '11', team_badge: 'https://apiv3.apifootball.com/badges/3035_horsham.jpg' },
-    { team_name: 'Billericay Town', overall_league_position: '2', overall_league_PTS: '87', overall_league_payed: '42', overall_league_W: '26', overall_league_D: '9', overall_league_L: '7', team_badge: 'https://apiv3.apifootball.com/badges/2986_billericay-town.jpg' }
+    { team_id: '3035', team_name: 'Horsham', overall_league_position: '1', overall_league_PTS: '87', overall_league_payed: '42', overall_league_W: '28', overall_league_D: '3', overall_league_L: '11', team_badge: 'https://apiv3.apifootball.com/badges/3035_horsham.jpg' },
+    { team_id: '2986', team_name: 'Billericay Town', overall_league_position: '2', overall_league_PTS: '87', overall_league_payed: '42', overall_league_W: '26', overall_league_D: '9', overall_league_L: '7', team_badge: 'https://apiv3.apifootball.com/badges/2986_billericay-town.jpg' }
   ];
 
   constructor(private api: StandingsApiService) {}
@@ -78,12 +78,21 @@ export class Standings implements OnInit {
     }
   }
 
-  getStandings() {
+ getStandings(teamKey?: string) {
+    debugger;
     if (this.league) {
       if (this.offlineMode) {
-        this.standings = this.mockStandings;
+        this.standings = teamKey
+          ? this.mockStandings.filter(s => s.team_id === teamKey) // Changed team_key to team_id
+          : this.mockStandings;
       } else {
-        this.api.getStandings(this.league).subscribe(data => this.standings = data.length ? data : this.mockStandings);
+        this.api.getStandings(this.league).subscribe(data => {
+          this.standings = teamKey
+            ? data.filter(s => s.team_id === teamKey) // Changed team_key to team_id
+            : data.length
+            ? data
+            : this.mockStandings;
+        });
       }
     }
   }

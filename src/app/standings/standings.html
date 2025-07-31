@@ -32,7 +32,8 @@
       </div>
       <div class="form-row">
         <mat-slide-toggle [(ngModel)]="offlineMode" name="offlineMode" (change)="loadCountries()">Offline Mode</mat-slide-toggle>
-        <button mat-raised-button color="primary" type="button" (click)="getStandings()">Get Standings</button>
+        <button mat-raised-button color="primary" type="button" (click)="getStandings(team)">Get Standings</button>
+        <button mat-raised-button color="accent" type="button" (click)="getStandings()">Show All Positions</button>
       </div>
     </form>
   </mat-card>
