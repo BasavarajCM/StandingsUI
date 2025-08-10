@@ -1,0 +1,45 @@
+.standings-container {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.toolbar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-card, .results-card {
+  border-radius: 12px;
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.form-field {
+  flex: 1 1 200px;
+}
+
+.form-actions {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.standings-table {
+  width: 100%;
+}
+
+.no-data {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

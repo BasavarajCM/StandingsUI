@@ -4,19 +4,18 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { StandingsApiService } from './standings-api.service';
 import { HttpClientModule } from '@angular/common/http';
-
 @Component({
   selector: 'app-standings',
   imports: [MaterialModule, FormsModule, CommonModule, HttpClientModule],
   providers: [StandingsApiService],
   templateUrl: './standings.html',
-  styleUrl: './standings.scss'
+  styleUrls: ['./standings.scss']
 })
 export class Standings implements OnInit {
-  country: string = '';
-  league: string = '';
-  team: string = '';
-  offlineMode: boolean = false;
+  country = '';
+  league = '';
+  team = '';
+  offlineMode = false;
   standings: any[] | null = null;
   countries: any[] = [];
   leagues: any[] = [];
@@ -78,17 +77,16 @@ export class Standings implements OnInit {
     }
   }
 
- getStandings(teamKey?: string) {
-    debugger;
+  getStandings(teamKey?: string) {
     if (this.league) {
       if (this.offlineMode) {
         this.standings = teamKey
-          ? this.mockStandings.filter(s => s.team_id === teamKey) // Changed team_key to team_id
+          ? this.mockStandings.filter(s => s.team_id === teamKey)
           : this.mockStandings;
       } else {
         this.api.getStandings(this.league).subscribe(data => {
           this.standings = teamKey
-            ? data.filter(s => s.team_id === teamKey) // Changed team_key to team_id
+            ? data.filter(s => s.team_id === teamKey)
             : data.length
             ? data
             : this.mockStandings;
