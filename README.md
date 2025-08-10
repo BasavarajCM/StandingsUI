@@ -25,7 +25,7 @@ Project Structure
 Troubleshooting
 
 Features
-Responsive UI built with [Angular/React/Vue]
+Responsive UI built with Angular
 
 Containerized deployment with Docker
 
@@ -35,7 +35,8 @@ Integrated with Backend Service
 
 Prerequisites
 Node.js v16+
-
+Angular
+Angular Material 
 Docker 20.10+
 
 Jenkins 2.346+ (for CI/CD)
