@@ -1,5 +1,4 @@
-Standing UI Service
-[
+Standing UI
 https://img.shields.io/badge/Docker-2CA5E0?style=flat&logo=docker&logoColor=white
 https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=Jenkins&logoColor=white
 https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white
