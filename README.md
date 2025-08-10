@@ -1,9 +1,11 @@
-Standing UI
-https://img.shields.io/badge/Docker-2CA5E0?style=flat&logo=docker&logoColor=white
-https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=Jenkins&logoColor=white
-https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white
+# Standing UI
 
-A responsive frontend application with automated CI/CD pipeline using Jenkins and Docker.
+[![Angular](https://img.shields.io/badge/Angular-DD0031?style=flat&logo=angular&logoColor=white)](https://angular.io)
+[![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=flat&logo=docker&logoColor=white)](https://docker.com)
+[![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=flat&logo=Jenkins&logoColor=white)](https://jenkins.io)
+[![Node.js](https://img.shields.io/badge/Node.js-43853D?style=flat&logo=node.js&logoColor=white)](https://nodejs.org)
+
+A responsive Angular frontend application with automated CI/CD pipeline using Jenkins and Docker.
 
 Table of Contents
 Features
